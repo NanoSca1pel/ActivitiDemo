@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/contex
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 这里可以使用 链接池 dbcp，然后下方processEngineConfiguration中使用property ref引用这个bean，但是这样会导致和其它业务数据源冲突-->
+    <!-- 此处用其他的连接池也可以 -->
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/activiti?nullCatalogMeansCurrent=true&amp;serverTimezone=GMT%2B8" />
+        <property name="username" value="root" />
+        <property name="password" value="123456" />
+        <property name="maxActive" value="3" />
+        <property name="maxIdle" value="1" />
+    </bean>-->
+
+    <bean id="processEngineConfiguration"
+          class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <!-- 引用数据源 上面已经设置好了-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <property name="jdbcDriver" value="com.mysql.cj.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/activiti?nullCatalogMeansCurrent=true&amp;serverTimezone=GMT%2B8" />
+        <property name="jdbcUsername" value="root" />
+        <property name="jdbcPassword" value="123456" />
+        <property name="jdbcMaxActiveConnections" value="3" />
+        <property name="jdbcMaxIdleConnections" value="1" />
+        <!-- activiti 数据库表处理策略 -->
+        <!-- flase： 默认值。activiti在启动时，会对比数据库表中保存的版本，如果没有表或者版本不匹配，将抛出异常。（生产环境常用） true： activiti会对数据库中所有表进行更新操作。如果表不存在，则自动创建。（开发时常用） create_drop： 在activiti启动时创建表，在关闭时删除表（必须手动关闭引擎，才能删除表）。（单元测试常用） drop-create： 在activiti启动时删除原来的旧表，然后在创建新表（不需要手动关闭引擎） -->
+        <property name="databaseSchemaUpdate" value="true"/>
+    </bean>
+</beans>
