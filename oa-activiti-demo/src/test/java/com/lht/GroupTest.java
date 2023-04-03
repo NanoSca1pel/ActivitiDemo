@@ -79,20 +79,6 @@ public class GroupTest {
     }
 
     /**
-     * 认领组任务
-     */
-    @Test
-    public void claimTask() {
-        TaskService taskService = processEngine.getTaskService();
-        Task task = taskService.createTaskQuery()
-                .taskId("82502")
-                .taskCandidateUser("朱江")
-                .singleResult();
-        Optional.ofNullable(task).ifPresent(t -> taskService.claim(t.getId(), "朱江"));
-
-    }
-
-    /**
      * 查询个人任务
      */
     @Test
@@ -109,6 +95,20 @@ public class GroupTest {
             System.out.println("Assignee: " + task.getAssignee());
             System.out.println("TaskName: " + task.getName());
         });
+    }
+
+    /**
+     * 认领组任务
+     */
+    @Test
+    public void claimTask() {
+        TaskService taskService = processEngine.getTaskService();
+        Task task = taskService.createTaskQuery()
+                .taskId("82502")
+                .taskCandidateUser("朱江")
+                .singleResult();
+        Optional.ofNullable(task).ifPresent(t -> taskService.claim(t.getId(), "朱江"));
+
     }
 
     /**
