@@ -27,6 +27,7 @@
         <commonsio.version>2.6</commonsio.version>
         <dbcp.version>1.4</dbcp.version>
         <lombok.version>1.16.18</lombok.version>
+        <juel.version>2.1.3</juel.version>
     </properties>
 
     <dependencies>
@@ -62,6 +63,11 @@
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-bpmn-layout</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-image-generator</artifactId>
             <version>${activiti.version}</version>
         </dependency>
         <!-- mysql驱动 -->
@@ -112,6 +118,13 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+
+        <!--测试使用juel表达式，对于activiti流程简单使用uel表达式可以不用这个包-->
+        <dependency>
+            <groupId>de.odysseus.juel</groupId>
+            <artifactId>juel</artifactId>
+            <version>${juel.version}</version>
         </dependency>
     </dependencies>
 

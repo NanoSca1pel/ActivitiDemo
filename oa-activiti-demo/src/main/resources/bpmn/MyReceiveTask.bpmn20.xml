@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="MyReceiveTask" name="MyReceiveTask" isExecutable="true">
+    <documentation>MyReceiveTask</documentation>
+    <startEvent id="startEvent1"></startEvent>
+    <userTask id="sid-CCC8DD61-9250-49F5-B660-1B5792A66DFA"></userTask>
+    <userTask id="sid-D8B690BF-209B-4984-AF12-1354C2741106"></userTask>
+    <endEvent id="sid-EB7C8C79-2CB0-43D2-84BE-58F4C60E55EE"></endEvent>
+    <receiveTask id="sid-9DBEE1C0-74E7-40B2-82CE-540AFF901F9B">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.boot.service.ReceiveTaskDelegate"></activiti:executionListener>
+        <activiti:executionListener event="start" class="com.boot.service.ReceiveTaskDelegate"></activiti:executionListener>
+      </extensionElements>
+    </receiveTask>
+    <sequenceFlow id="sid-C9B5E8CA-269B-4C12-900E-0A6A45300B97" sourceRef="startEvent1" targetRef="sid-CCC8DD61-9250-49F5-B660-1B5792A66DFA"></sequenceFlow>
+    <sequenceFlow id="sid-6C92D43F-0A33-4EF4-8AFB-A668B99918F8" sourceRef="sid-CCC8DD61-9250-49F5-B660-1B5792A66DFA" targetRef="sid-9DBEE1C0-74E7-40B2-82CE-540AFF901F9B"></sequenceFlow>
+    <sequenceFlow id="sid-B6C946C0-0373-4FDD-847C-E47DE0A63FC9" sourceRef="sid-9DBEE1C0-74E7-40B2-82CE-540AFF901F9B" targetRef="sid-D8B690BF-209B-4984-AF12-1354C2741106"></sequenceFlow>
+    <sequenceFlow id="sid-5856EDD0-4A4D-4CC4-8D9C-54C1940D75CC" sourceRef="sid-D8B690BF-209B-4984-AF12-1354C2741106" targetRef="sid-EB7C8C79-2CB0-43D2-84BE-58F4C60E55EE"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_MyReceiveTask">
+    <bpmndi:BPMNPlane bpmnElement="MyReceiveTask" id="BPMNPlane_MyReceiveTask">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="75.0" y="175.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-CCC8DD61-9250-49F5-B660-1B5792A66DFA" id="BPMNShape_sid-CCC8DD61-9250-49F5-B660-1B5792A66DFA">
+        <omgdc:Bounds height="80.0" width="100.0" x="216.5" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-D8B690BF-209B-4984-AF12-1354C2741106" id="BPMNShape_sid-D8B690BF-209B-4984-AF12-1354C2741106">
+        <omgdc:Bounds height="80.0" width="100.0" x="840.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-EB7C8C79-2CB0-43D2-84BE-58F4C60E55EE" id="BPMNShape_sid-EB7C8C79-2CB0-43D2-84BE-58F4C60E55EE">
+        <omgdc:Bounds height="28.0" width="28.0" x="1154.5" y="176.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9DBEE1C0-74E7-40B2-82CE-540AFF901F9B" id="BPMNShape_sid-9DBEE1C0-74E7-40B2-82CE-540AFF901F9B">
+        <omgdc:Bounds height="80.0" width="100.0" x="510.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-B6C946C0-0373-4FDD-847C-E47DE0A63FC9" id="BPMNEdge_sid-B6C946C0-0373-4FDD-847C-E47DE0A63FC9">
+        <omgdi:waypoint x="610.0" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="840.0" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C9B5E8CA-269B-4C12-900E-0A6A45300B97" id="BPMNEdge_sid-C9B5E8CA-269B-4C12-900E-0A6A45300B97">
+        <omgdi:waypoint x="105.0" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="216.5" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-6C92D43F-0A33-4EF4-8AFB-A668B99918F8" id="BPMNEdge_sid-6C92D43F-0A33-4EF4-8AFB-A668B99918F8">
+        <omgdi:waypoint x="316.5" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="510.0" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-5856EDD0-4A4D-4CC4-8D9C-54C1940D75CC" id="BPMNEdge_sid-5856EDD0-4A4D-4CC4-8D9C-54C1940D75CC">
+        <omgdi:waypoint x="940.0" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1154.5" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -79,6 +79,24 @@ public class GroupTest {
     }
 
     /**
+     * 查询组任务
+     */
+    @Test
+    public void findGroupTaskList2() {
+        TaskService taskService = processEngine.getTaskService();
+        List<Task> list = taskService.createTaskQuery()
+                .taskCandidateGroup("group")
+                .list();
+        list.forEach(task -> {
+            System.out.println("=====================");
+            System.out.println("InstanceId: " + task.getProcessInstanceId());
+            System.out.println("Id: " + task.getId());
+            System.out.println("Assignee: " + task.getAssignee());
+            System.out.println("task: " + task.getName());
+        });
+    }
+
+    /**
      * 查询个人任务
      */
     @Test

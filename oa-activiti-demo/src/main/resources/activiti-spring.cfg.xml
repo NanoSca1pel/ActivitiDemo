@@ -19,6 +19,17 @@ http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
         <property name="databaseSchemaUpdate" value="true"/>
         <!-- activiti的定时任务关闭 -->
         <property name="asyncExecutorActivate" value="false"/>
+        <!--如果使用到了MailTask，需要配置邮箱-->
+        <property name="mailServers">
+            <map>
+                <entry>
+                    <key>
+                        <value>sina</value>
+                    </key>
+                    <ref bean="sinaMailServerInfo"/>
+                </entry>
+            </map>
+        </property>
     </bean>
     <!-- 流程引擎 -->
     <bean id="processEngine"
@@ -75,4 +86,15 @@ http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
         <aop:advisor advice-ref="txAdvice"
                      pointcut="execution(* com.lht.oa.service.impl.*.*(..))"/>
     </aop:config>
+
+    <!--如果使用到了MailTask，需要配置邮箱-->
+    <bean id="sinaMailServerInfo" class="org.activiti.engine.cfg.MailServerInfo">
+        <property name="mailServerHost" value="mtp.sina.cn"/>
+        <property name="mailServerPort" value="994"/>
+        <property name="mailServerDefaultFrom" value="beyond_world@sina.cn"/>
+        <property name="mailServerUsername" value="beyond_world"/>
+        <!--注意这里的密码不是邮箱的登录密码, 邮箱客户端授权码-->
+        <property name="mailServerPassword" value="1a01100034a4ff47"/>
+        <property name="mailServerUseSSL" value="true"/>
+    </bean>
 </beans>

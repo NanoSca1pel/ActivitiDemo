@@ -1,5 +1,7 @@
 package com.lht;
 
+import de.odysseus.el.ExpressionFactoryImpl;
+import de.odysseus.el.util.SimpleContext;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.repository.Deployment;
@@ -9,6 +11,8 @@ import org.activiti.engine.task.Task;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
+import javax.el.ExpressionFactory;
+import javax.el.ValueExpression;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -153,5 +157,46 @@ public class UelTest {
             System.out.println(hai.getProcessDefinitionId());
             System.out.println(hai.getProcessInstanceId());
         });
+    }
+
+
+    /**
+     * 简单测试juel工具
+     */
+    @Test
+    public void test01(){
+        //step1
+        ExpressionFactory factory = new ExpressionFactoryImpl();
+        SimpleContext context = new SimpleContext();
+
+        //step2
+        context.setVariable("var1", factory.createValueExpression(true, boolean.class));
+        context.setVariable("var2", factory.createValueExpression(false, boolean.class));
+
+        //step3
+        String text = "结果:${var1 && var2} 结果:${var2}";
+        ValueExpression e = factory.createValueExpression(context, text, String.class);
+        System.out.println(e.getValue(context));
+    }
+
+    /**
+     * 简单测试juel工具
+     */
+    @Test
+    public void test02() throws NoSuchMethodException {
+
+        ExpressionFactory factory = new ExpressionFactoryImpl();
+
+        SimpleContext context = new SimpleContext();
+
+        context.setFunction("JuelTest", "add", UelTest.class.getMethod("add", int.class, int.class));
+
+        ValueExpression e = factory.createValueExpression(context, "${JuelTest:add(1,2)}", int.class);
+
+        System.out.println(e.getValue(context));
+    }
+
+    public static int add(int a,int b){
+        return a + b;
     }
 }
