@@ -13,6 +13,7 @@
         <module>oa-business</module>
         <module>oa-activiti-demo</module>
         <module>oa-spring-activiti</module>
+        <module>oa-springboot-activiti6ui</module>
     </modules>
 
     <properties>
