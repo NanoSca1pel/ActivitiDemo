@@ -36,7 +36,7 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter</artifactId>
             <version>7.1.0.M6</version>
-<!--            <groupId>org.activiti</groupId>
+            <!--<groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter-basic</artifactId>
             <version>6.0.0</version>-->
             <!--由于使用mybatis-plus,所以此处排除activiti本身引用的mybatis框架-->
@@ -69,7 +69,16 @@
             <version>3.0.9</version>
             <type>pom</type>
         </dependency>
-
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.5.1</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

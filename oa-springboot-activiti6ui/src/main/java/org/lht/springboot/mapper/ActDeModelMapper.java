@@ -9,6 +9,5 @@ import org.lht.springboot.entity.ActDeModel;
  * @author: lhtao
  * @date: 2024年01月02日 16:53
  */
-@Mapper
 public interface ActDeModelMapper extends BaseMapper<ActDeModel> {
 }
