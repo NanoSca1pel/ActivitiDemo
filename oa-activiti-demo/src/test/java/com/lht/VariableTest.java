@@ -109,9 +109,10 @@ public class VariableTest {
             //taskService.setVariablesLocal(task.getId(), map);
             //taskService.complete(task.getId());
 
+
             Map<String, Object> map = new HashMap<>();
             map.put("holidays", holidays);
-            taskService.complete(task.getId(), map);
+            taskService.complete(task.getId(), map, true);
         }
     }
 }

@@ -9,8 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>oa-common</module>
-        <module>oa-business</module>
         <module>oa-activiti-demo</module>
         <module>oa-spring-activiti</module>
         <module>oa-springboot-activiti6ui</module>
