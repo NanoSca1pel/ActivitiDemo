@@ -112,7 +112,6 @@ public class VariableTest {
             Map<String, Object> map = new HashMap<>();
             map.put("holidays", holidays);
             taskService.complete(task.getId(), map);
-
         }
     }
 }
